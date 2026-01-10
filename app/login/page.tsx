@@ -25,18 +25,33 @@ export default function LoginPage() {
     if (!error) router.push("/dashboard");
   }
 
-  async function handleSignup() {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+ async function handleSignup() {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
 
-    if (!error) alert("Check your email to confirm!");
+  console.log("SIGNUP DATA:", data);
+  console.log("SIGNUP ERROR:", error);
+
+  if (error) {
+    alert(error.message);
+    return;
   }
+
+  if (!data.session) {
+    alert("Account created. Check your email to confirm.");
+  } else {
+    alert("Account created and logged in.");
+    router.push("/dashboard");
+  }
+}
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-100">
-      <div className="bg-white p-8 rounded shadow space-y-4">
+      <div className="bg-white p-8 rounded shadow flex flex-col gap-4">
+
 
         <h1 className="text-xl font-semibold">Login</h1>
 
@@ -64,11 +79,12 @@ export default function LoginPage() {
 
        <button
   type="button"
-  onClick={() => alert("Signup button clicked")}
+  onClick={handleSignup}
   className="mt-4 w-full bg-blue-600 text-white py-2 rounded"
 >
-  SIGN UP
+  Sign up
 </button>
+
 
       </div>
     </div>
