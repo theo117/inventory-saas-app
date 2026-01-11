@@ -1,3 +1,6 @@
+"use server"
+
+
 import { getProfile } from "@/app/lib/get-profile"
 import { createSupabaseServerClient } from "@/app/lib/supabase-server"
 
