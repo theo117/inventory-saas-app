@@ -1,8 +1,6 @@
 "use client";
 
-import { deleteItem, addItem } from "./actions"
-
-
+import { deleteItem, updateItem } from "./actions";
 
 type Item = {
   id: number;
@@ -15,8 +13,7 @@ export default function InventoryList({ items }: { items: Item[] }) {
     <div className="space-y-6">
 
       {/* Add Item */}
-      <form action={require("./actions").addItem}>
-
+      <form action={require("./actions").addItem} className="flex gap-4">
         <input
           name="name"
           className="flex-1 rounded-md border px-3 py-2"
@@ -50,7 +47,7 @@ export default function InventoryList({ items }: { items: Item[] }) {
 
             <div className="flex gap-4">
               {/* Edit */}
-              
+              <form action={updateItem} className="flex gap-2">
                 <input type="hidden" name="id" value={item.id} />
 
                 <input
@@ -68,7 +65,7 @@ export default function InventoryList({ items }: { items: Item[] }) {
                 />
 
                 <button className="text-green-600 text-sm">Save</button>
-              
+              </form>
 
               {/* Delete */}
               <form action={deleteItem}>
