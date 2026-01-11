@@ -1,6 +1,7 @@
 "use client";
 
-import { deleteItem, updateItem } from "./actions";
+import { deleteItem } from "./actions"
+
 
 type Item = {
   id: number;
