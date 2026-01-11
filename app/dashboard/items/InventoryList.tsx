@@ -1,6 +1,7 @@
 "use client";
 
-import { deleteItem } from "./actions"
+import { deleteItem, addItem } from "./actions"
+
 
 
 type Item = {
