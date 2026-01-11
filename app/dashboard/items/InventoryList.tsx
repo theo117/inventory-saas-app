@@ -66,7 +66,7 @@ export default function InventoryList({ items }: { items: Item[] }) {
                 />
 
                 <button className="text-green-600 text-sm">Save</button>
-              </form>
+              
 
               {/* Delete */}
               <form action={deleteItem}>
