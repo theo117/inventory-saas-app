@@ -13,8 +13,7 @@ export default function InventoryList({ items }: { items: Item[] }) {
     <div className="space-y-6">
 
       {/* Add Item */}
-      <form action={addItem} className="flex gap-4">
-
+      <form action={require("./actions").addItem} className="flex gap-4">
         <input
           name="name"
           className="flex-1 rounded-md border px-3 py-2"
@@ -48,25 +47,13 @@ export default function InventoryList({ items }: { items: Item[] }) {
 
             <div className="flex gap-4">
               {/* Edit */}
-              <form action={updateItem} className="flex gap-2">
-                <input type="hidden" name="id" value={item.id} />
+              <form action={updateItem}>
+  <input type="hidden" name="id" value={item.id} />
+  <input name="name" defaultValue={item.name} />
+  <input name="quantity" defaultValue={item.quantity} />
+  <button>Save</button>
+</form>
 
-                <input
-                  name="name"
-                  defaultValue={item.name}
-                  className="w-32 rounded border px-2 py-1"
-                />
-
-                <input
-                  name="quantity"
-                  type="number"
-                  defaultValue={item.quantity}
-                  min={1}
-                  className="w-20 rounded border px-2 py-1"
-                />
-
-                <button className="text-green-600 text-sm">Save</button>
-              </form>
 
               {/* Delete */}
               <form action={deleteItem}>
