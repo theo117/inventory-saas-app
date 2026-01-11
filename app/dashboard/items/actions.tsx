@@ -8,6 +8,11 @@ export async function getItems() {
   const me = await getProfile()
   if (!me) throw new Error("Not authenticated")
 
+  <div className="text-sm text-red-500 mb-4">
+  Logged in as: {me.email} — {me.role}
+</div>
+
+
   const { data } = await supabase
     .from("items")
     .select("*")
