@@ -48,7 +48,7 @@ export default function InventoryList({ items }: { items: Item[] }) {
 
             <div className="flex gap-4">
               {/* Edit */}
-              <form action={updateItem} className="flex gap-2">
+              
                 <input type="hidden" name="id" value={item.id} />
 
                 <input
