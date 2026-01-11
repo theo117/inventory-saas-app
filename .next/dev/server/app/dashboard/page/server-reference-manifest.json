@@ -1,0 +1,80 @@
+{
+  "node": {
+    "005b4deac13a0b8c16d5cf280aa14e7f3d3fe01960": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/logout-action.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/dashboard/items/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "logout",
+          "filename": "app/dashboard/logout-action.ts"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "rsc"
+      },
+      "exportedName": "logout",
+      "filename": "app/dashboard/logout-action.ts"
+    },
+    "00b0153a19d84ab0d0827df2d29fa2d23ff4147cbc": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/logout-action.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/dashboard/items/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getItems",
+          "filename": "app/dashboard/items/actions.tsx"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "rsc"
+      },
+      "exportedName": "getItems",
+      "filename": "app/dashboard/items/actions.tsx"
+    },
+    "406705747a9545b11aea9eb3e6ef6eadc9bf32f0d2": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/logout-action.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/dashboard/items/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "updateItem",
+          "filename": "app/dashboard/items/actions.tsx"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "rsc"
+      },
+      "exportedName": "updateItem",
+      "filename": "app/dashboard/items/actions.tsx"
+    },
+    "40766a76e1dfa9a94640275504df6a5465a82945f6": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/logout-action.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/dashboard/items/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "deleteItem",
+          "filename": "app/dashboard/items/actions.tsx"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "rsc"
+      },
+      "exportedName": "deleteItem",
+      "filename": "app/dashboard/items/actions.tsx"
+    },
+    "40cf5f7e8d2f6ce930ffc7a69b9f19fe0b8de22c97": {
+      "workers": {
+        "app/dashboard/page": {
+          "moduleId": "[project]/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/dashboard/logout-action.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/dashboard/items/actions.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "addItem",
+          "filename": "app/dashboard/items/actions.tsx"
+        }
+      },
+      "layer": {
+        "app/dashboard/page": "rsc"
+      },
+      "exportedName": "addItem",
+      "filename": "app/dashboard/items/actions.tsx"
+    }
+  },
+  "edge": {}
+}

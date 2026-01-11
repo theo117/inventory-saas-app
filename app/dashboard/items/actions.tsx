@@ -1,66 +1,25 @@
-"use server";
+import { getProfile } from "@/app/lib/get-profile"
+import { createSupabaseServerClient } from "@/app/lib/supabase-server"
 
-import { createSupabaseServerClient } from "@/app/lib/supabase-server";
+export async function deleteItem(id: string) {
+  const supabase = await createSupabaseServerClient()
+  const me = await getProfile()
 
-export async function addItem(formData: FormData) {
-  const name = formData.get("name") as string;
-  const quantity = Number(formData.get("quantity"));
+  if (!me || me.role !== "admin") {
+    throw new Error("Not allowed")
+  }
 
-  const supabase = await createSupabaseServerClient();
-
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) throw new Error("Not authenticated");
-
-  await supabase.from("items").insert({
-    name,
-    quantity,
-    user_id: user.id,
-  });
-}
-
-export async function deleteItem(formData: FormData) {
-  const id = Number(formData.get("id"));
-
-  const supabase = await createSupabaseServerClient();
-
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) throw new Error("Not authenticated");
-
-  await supabase
+  const { data: item } = await supabase
     .from("items")
-    .delete()
+    .select("name")
     .eq("id", id)
-    .eq("user_id", user.id);
-}
+    .single()
 
-export async function updateItem(formData: FormData) {
-  const id = Number(formData.get("id"));
-  const name = formData.get("name") as string;
-  const quantity = Number(formData.get("quantity"));
+  await supabase.from("items").delete().eq("id", id)
 
-  const supabase = await createSupabaseServerClient();
-
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) throw new Error("Not authenticated");
-
-  await supabase
-    .from("items")
-    .update({ name, quantity })
-    .eq("id", id)
-    .eq("user_id", user.id);
-}
-
-export async function getItems() {
-  const supabase = await createSupabaseServerClient();
-
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) throw new Error("Not authenticated");
-
-  const { data } = await supabase
-    .from("items")
-    .select("*")
-    .eq("user_id", user.id)
-    .order("id");
-
-  return data;
+  await supabase.from("audit_logs").insert({
+    actor_id: me.id,
+    action: "DELETED_ITEM",
+    target: item?.name ?? `Item ${id}`,
+  })
 }

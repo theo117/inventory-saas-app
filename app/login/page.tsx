@@ -25,18 +25,34 @@ export default function LoginPage() {
     if (!error) router.push("/dashboard");
   }
 
-  async function handleSignup() {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+ async function handleSignup() {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
 
-    if (!error) alert("Check your email to confirm!");
+  console.log("SIGNUP DATA:", data);
+  console.log("SIGNUP ERROR:", error);
+
+  if (error) {
+    alert(error.message);
+    return;
   }
+
+  if (!data.session) {
+    alert("Account created. Check your email to confirm.");
+  } else {
+    alert("Account created and logged in.");
+    router.push("/dashboard");
+  }
+}
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-100">
-      <form className="bg-white p-8 rounded shadow space-y-4" onSubmit={handleLogin}>
+      <div className="bg-white p-8 rounded shadow flex flex-col gap-4">
+
+
         <h1 className="text-xl font-semibold">Login</h1>
 
         <input
@@ -54,18 +70,23 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button className="bg-black text-white w-full py-2">
-          Login
-        </button>
-
         <button
-          type="button"
-          onClick={handleSignup}
-          className="text-sm underline"
-        >
-          Sign up
-        </button>
-      </form>
+  onClick={handleLogin as any}
+  className="bg-black text-white w-full py-2"
+>
+  Login
+</button>
+
+       <button
+  type="button"
+  onClick={handleSignup}
+  className="mt-4 w-full bg-blue-600 text-white py-2 rounded"
+>
+  Sign up
+</button>
+
+
+      </div>
     </div>
   );
 }
