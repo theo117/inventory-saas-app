@@ -13,7 +13,8 @@ export default function InventoryList({ items }: { items: Item[] }) {
     <div className="space-y-6">
 
       {/* Add Item */}
-      <form action={require("./actions").addItem} className="flex gap-4">
+      <form action={addItem} className="flex gap-4">
+
         <input
           name="name"
           className="flex-1 rounded-md border px-3 py-2"
